@@ -5,10 +5,9 @@ namespace App\Http\Controllers;
 
 
 
-use App\Http\Repository\UsuarioRepository;
 use App\Http\Service\TesteService;
-use Illuminate\Auth\Access\Response;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+
 
 class TesteController extends Controller
 {
@@ -25,14 +24,21 @@ class TesteController extends Controller
 
 
     /**
-     * @param TesteService $testeService
-     * @return mixed
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function create(TesteService $testeService)
+    public function form()
     {
 
-        $dado = $testeService->create();
-        return $dado;
+        return view('templates/form');
+    }
+
+
+    /**
+     * @param Request $request
+     */
+    public function create(Request $request)
+    {
+        dd($request);
 
     }
 

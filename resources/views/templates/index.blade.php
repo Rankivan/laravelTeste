@@ -15,7 +15,6 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Nível Acesso</th>
                 <th scope="col">Ação</th>
-
             </tr>
             </thead>
             <tbody>
@@ -28,11 +27,10 @@
                     <td>  {{$dados->role}}</td>
                     <td>
                         <a href="{{ url('/delete/' . $dados->id) }}" id="btn-delete" type="button" class="btn btn-danger"> Excluir </a>
-                        <a href="{{ url('/update/' . $dados->id) }}" id="btn-update" type="button" class="btn btn-primary"> Editar </a>
+                        <a href="{{ url('/form/' . $dados->id) }}" id="btn-update" type="button" class="btn btn-primary"> Editar </a>
                     </td>
                 </tr>
             @endforeach
-
             </tbody>
         </table>
 
@@ -41,8 +39,7 @@
         </div>
 
         <div>
-            <a href="{{ url('/form') }}" id="btn-create" type="button" class="btn btn-success"> Cadastrar </a>
-
+            <a href="{{ url('/form/null') }}" id="btn-create" type="button" class="btn btn-success"> Cadastrar </a>
         </div>
 
     </div>

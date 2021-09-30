@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
-
-
 use App\Http\Service\TesteService;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 
 class TesteController extends Controller
@@ -19,38 +17,32 @@ class TesteController extends Controller
     public function index(TesteService $testeService)
     {
         $dado = $testeService->listagem();
-        return view('templates/index', compact('dado'));
+        return view('templates/index', ['dado' => $dado]);
     }
 
 
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function form()
+    public function form(TesteService $testeService, $id)
     {
-
-        return view('templates/form');
+        $dados = $testeService->getDadosForm($id);
+        return view('templates/form', ['dadosForm' => $dados]);
     }
 
 
     /**
      * @param Request $request
      */
-    public function create(Request $request)
+    public function save(Request $request, TesteService $testeService)
     {
-        dd($request);
+        try {
+            $testeService->save($request);
+            return Response::HTTP_OK;
 
-    }
-
-    /**
-     * @param TesteService $testeService
-     * @return mixed
-     */
-    public function update(TesteService $testeService)
-    {
-
-        $dado = $testeService->update();
-        return $dado;
+        } catch (\Exception $exception) {
+            return Response::HTTP_PRECONDITION_FAILED;
+        }
 
     }
 

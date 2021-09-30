@@ -16,6 +16,12 @@ class UsuarioRepository
       $this->usuario = $usuario;
     }
 
+    public function getDadosById($id)
+    {
+        $usuarios = DB::table('usuario as u')->find($id);
+        return $usuarios;
+    }
+
     /**
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
@@ -25,7 +31,7 @@ class UsuarioRepository
             ->select('u.id', 'u.usuario', 'u.nome', 'na.role')
             ->join('nivel_acesso as na', 'na.id', '=', 'u.nivel_acesso')
             ->where('u.removido', '=', '0')
-            ->paginate(2);
+            ->paginate(5);
 
         return $usuarios;
     }

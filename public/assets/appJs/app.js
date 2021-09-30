@@ -1,6 +1,20 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./resources/views/js/configHttp/configHttp.js":
+/*!*****************************************************!*\
+  !*** ./resources/views/js/configHttp/configHttp.js ***!
+  \*****************************************************/
+/***/ (() => {
+
+// Códigos das respostas Http
+ok = '200';
+fail = '412';
+messageFail = '            <div class="alert alert-danger d-flex align-items-center" role="alert">\n' + '                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>\n' + '                    <div>\n' + '                        <h5>Erro ao realizar a operação!</h5>\n' + '                    </div>\n' + '                </div>';
+messageOk = '                <div class="alert alert-success d-flex align-items-center" role="alert" >\n' + '                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>\n' + '                    <div>\n' + '                        <h5>Operação realizada com sucesso!</h5>\n' + '                    </div>\n' + '                </div>';
+
+/***/ }),
+
 /***/ "./resources/views/js/teste_js/teste.js":
 /*!**********************************************!*\
   !*** ./resources/views/js/teste_js/teste.js ***!
@@ -14,19 +28,31 @@ $.ajaxSetup({
 });
 $("#enviar").click(function () {
   $.ajax({
-    url: $('#createTeste').val(),
+    url: $('#salvar').val(),
     type: 'POST',
     data: {
       usuario: $('#usuario').val(),
       senha: $('#senha').val(),
       nome: $('#nome').val(),
-      nivelAcesso: $('#nivelAcesso').val()
-    },
-    beforeSend: function beforeSend() {
-      alert('Sucesso!');
-    },
-    error: function error() {
-      alert('erro!');
+      nivelAcesso: $('#nivelAcesso').val(),
+      id: $('#id').val()
+    }
+  }).done(function (response) {
+    $('#modal').modal('show');
+
+    if (response === ok) {
+      //Mensagem de sucesso.
+      $('#retorno').html(messageOk);
+      setTimeout(function () {
+        $('#modal').modal('hide');
+      }, 2500);
+    } else {
+      console.log('deu ruim'); //Mensagem de Erro.
+
+      $('#retorno').html(messageFail);
+      setTimeout(function () {
+        $('#modal').modal('hide');
+      }, 2500);
     }
   });
 });
@@ -196,6 +222,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	__webpack_require__.O(undefined, ["assets/appCss/app"], () => (__webpack_require__("./resources/views/js/configHttp/configHttp.js")))
 /******/ 	__webpack_require__.O(undefined, ["assets/appCss/app"], () => (__webpack_require__("./resources/views/js/teste_js/teste.js")))
 /******/ 	__webpack_require__.O(undefined, ["assets/appCss/app"], () => (__webpack_require__("./resources/views/css/teste.css")))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/appCss/app"], () => (__webpack_require__("./resources/views/css/testeCor.css")))

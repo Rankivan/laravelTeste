@@ -1,3 +1,14 @@
+
+// Permissão token para ajax
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+
+
+
 // Códigos das respostas Http
 ok = '200';
 fail = '412';

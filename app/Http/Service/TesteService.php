@@ -44,10 +44,10 @@ class TesteService
 
         if ($dados['id']) {
             $result = $usuario->updateUsuario($dados['id'], [
-                'usuario' => $dados['usuario'],
-                'senha' => $dados['senha'],
-                'nome' => $dados['nome'],
-                'nivel_acesso' => $dados['nivelAcesso']
+                'usuario'       => $dados['usuario'],
+                'senha'         => $dados['senha'],
+                'nome'          => $dados['nome'],
+                'nivel_acesso'  => $dados['nivelAcesso']
             ]);
 
         } else {

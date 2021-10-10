@@ -1,44 +1,43 @@
 
-$( document ).ready(function() {
+$("#enviar").click(function () {
+    //Loadding...
+    loaddingCube.show();
 
-});
-
-$("#enviar").click(function() {
     $.ajax({
-        url      : $('#salvar').val(),
-        type     : 'POST',
-        data     : {
-          usuario     : $('#usuario').val(),
-          senha       : $('#senha').val(),
-          nome        : $('#nome').val(),
-          nivelAcesso : $('#nivelAcesso').val(),
-          id          : $('#id').val(),
-        }
+        url  : $('#salvar').val(),
+        type : 'POST',
+        data : {
+            usuario     : $('#usuario').val(),
+            senha       : $('#senha').val(),
+            nome        : $('#nome').val(),
+            nivelAcesso : $('#nivelAcesso').val(),
+            id          : $('#id').val(),
+        },
     })
-        .done(function(response) {
-            $('#modal').modal('show');
-            if (response === ok){
+        .done(function (response) {
+            loaddingCube.hide();
+            $('#messageRetorno').modal('show');
 
+            if (response === ok) {
                 //Mensagem de sucesso.
                 $('#retorno').html(messageOk);
-
                 setTimeout(function () {
-                    $('#modal').modal('hide')
-                }, 2500);
+                    $('#messageRetorno').modal('hide')
+                }, 1500);
 
             } else {
-              console.log('deu ruim')
-
                 //Mensagem de Erro.
                 $('#retorno').html(messageFail);
-
                 setTimeout(function () {
-                    $('#modal').modal('hide')
-                }, 2500);
+                    $('#messageRetorno').modal('hide')
+                }, 1500);
             }
 
-        });
+        })
 
 });
+
+
+
 
 

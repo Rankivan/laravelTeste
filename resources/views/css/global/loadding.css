@@ -2,30 +2,18 @@
 
 /* Código referente aos tres pontos "..."*/
 .ponto1 {
-    -webkit-animation-delay: 1s;
-            animation-delay: 1s;
-    -webkit-animation: hiden 1s cubic-bezier(.5, 0, 1, 1) infinite alternate;
-            animation: hiden 1s cubic-bezier(.5, 0, 1, 1) infinite alternate;
+    animation-delay: 1s;
+    animation: hiden 1s cubic-bezier(.5, 0, 1, 1) infinite alternate;
 }
 
 .ponto2 {
-    -webkit-animation-delay: 2s;
-            animation-delay: 2s;
-    -webkit-animation: hiden 1s cubic-bezier(.5, 0, 1, 1) infinite alternate;
-            animation: hiden 1s cubic-bezier(.5, 0, 1, 1) infinite alternate;
+    animation-delay: 2s;
+    animation: hiden 1s cubic-bezier(.5, 0, 1, 1) infinite alternate;
 }
 
 .ponto3 {
-    -webkit-animation-delay: 3s;
-            animation-delay: 3s;
-    -webkit-animation: hiden 1s cubic-bezier(.5, 0, 1, 1) infinite alternate;
-            animation: hiden 1s cubic-bezier(.5, 0, 1, 1) infinite alternate;
-}
-
-@-webkit-keyframes hiden {
-    to {
-        opacity: 0.3;
-    }
+    animation-delay: 3s;
+    animation: hiden 1s cubic-bezier(.5, 0, 1, 1) infinite alternate;
 }
 
 @keyframes hiden {
@@ -53,8 +41,7 @@
     transform-Origin: 50% 100%;
     transform: rotateY(45deg) rotateX(0);
     border-radius: 20%;
-    -webkit-animation: is-rotating 2s infinite;
-            animation: is-rotating 2s infinite;
+    animation: is-rotating 2s infinite;
 }
 
 .cubeFace {
@@ -69,8 +56,7 @@
     box-shadow: inset 0 0 0 3px #1a202c;
     transform-Origin: 50% 50%;
     transform: rotateX(90deg);
-    -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .face2 {
@@ -86,8 +72,7 @@
     transform-Origin: 0 0;
     background: inherit;
     box-shadow: inherit;
-    -webkit-backface-visibility: inherit;
-            backface-visibility: inherit;
+    backface-visibility: inherit;
 }
 
 .cubeFace:before {
@@ -102,14 +87,6 @@
     transform: rotateY(90deg);
 }
 
-@-webkit-keyframes is-rotating {
-    to {
-        transform: rotateY(405deg) rotateX(360deg);
-    }
-    /* ==================================================================*/
-
-}
-
 @keyframes is-rotating {
     to {
         transform: rotateY(405deg) rotateX(360deg);
@@ -117,4 +94,3 @@
     /* ==================================================================*/
 
 }
-

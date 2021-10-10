@@ -12,11 +12,11 @@
 
     </head>
 
-    <body>
+    <body class="body">
 
         <!--========================================================================-->
 
-        @include('messages.retorno.retorno')
+        @include('templates.global.retorno.retorno')
         <!--Conteúdo-->
         @yield('conteudo')
 

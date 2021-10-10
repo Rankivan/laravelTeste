@@ -1,10 +1,10 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./resources/views/js/configHttp/configHttp.js":
-/*!*****************************************************!*\
-  !*** ./resources/views/js/configHttp/configHttp.js ***!
-  \*****************************************************/
+/***/ "./resources/views/js/global/global.js":
+/*!*********************************************!*\
+  !*** ./resources/views/js/global/global.js ***!
+  \*********************************************/
 /***/ (() => {
 
 // Permissão token para ajax
@@ -15,9 +15,15 @@ $.ajaxSetup({
 }); // Códigos das respostas Http
 
 ok = '200';
-fail = '412';
+fail = '412'; // Messages Feedback
+
 messageFail = '            <div class="alert alert-danger d-flex align-items-center" role="alert">\n' + '                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>\n' + '                    <div>\n' + '                        <h5>Erro ao realizar a operação!</h5>\n' + '                    </div>\n' + '                </div>';
 messageOk = '                <div class="alert alert-success d-flex align-items-center" role="alert" >\n' + '                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>\n' + '                    <div>\n' + '                        <h5>Operação realizada com sucesso!</h5>\n' + '                    </div>\n' + '                </div>';
+
+window.onload = function () {
+  loaddingCube = $('#loaddingCube');
+  loaddingCube.hide();
+};
 
 /***/ }),
 
@@ -27,8 +33,9 @@ messageOk = '                <div class="alert alert-success d-flex align-items-
   \**********************************************/
 /***/ (() => {
 
-$(document).ready(function () {});
 $("#enviar").click(function () {
+  //Loadding...
+  loaddingCube.show();
   $.ajax({
     url: $('#salvar').val(),
     type: 'POST',
@@ -40,44 +47,31 @@ $("#enviar").click(function () {
       id: $('#id').val()
     }
   }).done(function (response) {
-    $('#modal').modal('show');
+    loaddingCube.hide();
+    $('#messageRetorno').modal('show');
 
     if (response === ok) {
       //Mensagem de sucesso.
       $('#retorno').html(messageOk);
       setTimeout(function () {
-        $('#modal').modal('hide');
-      }, 2500);
+        $('#messageRetorno').modal('hide');
+      }, 1500);
     } else {
-      console.log('deu ruim'); //Mensagem de Erro.
-
+      //Mensagem de Erro.
       $('#retorno').html(messageFail);
       setTimeout(function () {
-        $('#modal').modal('hide');
-      }, 2500);
+        $('#messageRetorno').modal('hide');
+      }, 1500);
     }
   });
 });
 
 /***/ }),
 
-/***/ "./resources/views/css/teste.css":
-/*!***************************************!*\
-  !*** ./resources/views/css/teste.css ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./resources/views/css/testeCor.css":
-/*!******************************************!*\
-  !*** ./resources/views/css/testeCor.css ***!
-  \******************************************/
+/***/ "./resources/views/css/global/loadding.css":
+/*!*************************************************!*\
+  !*** ./resources/views/css/global/loadding.css ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -224,10 +218,9 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["assets/appCss/app"], () => (__webpack_require__("./resources/views/js/configHttp/configHttp.js")))
+/******/ 	__webpack_require__.O(undefined, ["assets/appCss/app"], () => (__webpack_require__("./resources/views/js/global/global.js")))
 /******/ 	__webpack_require__.O(undefined, ["assets/appCss/app"], () => (__webpack_require__("./resources/views/js/teste_js/teste.js")))
-/******/ 	__webpack_require__.O(undefined, ["assets/appCss/app"], () => (__webpack_require__("./resources/views/css/teste.css")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/appCss/app"], () => (__webpack_require__("./resources/views/css/testeCor.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/appCss/app"], () => (__webpack_require__("./resources/views/css/global/loadding.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

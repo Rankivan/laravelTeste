@@ -27,44 +27,56 @@ window.onload = function () {
 
 /***/ }),
 
-/***/ "./resources/views/js/teste_js/teste.js":
-/*!**********************************************!*\
-  !*** ./resources/views/js/teste_js/teste.js ***!
-  \**********************************************/
+/***/ "./resources/views/js/usuario/form.js":
+/*!********************************************!*\
+  !*** ./resources/views/js/usuario/form.js ***!
+  \********************************************/
 /***/ (() => {
 
-$("#enviar").click(function () {
-  //Loadding...
-  loaddingCube.show();
-  $.ajax({
-    url: $('#salvar').val(),
-    type: 'POST',
-    data: {
-      usuario: $('#usuario').val(),
-      senha: $('#senha').val(),
-      nome: $('#nome').val(),
-      nivelAcesso: $('#nivelAcesso').val(),
-      id: $('#id').val()
-    }
-  }).done(function (response) {
-    loaddingCube.hide();
-    $('#messageRetorno').modal('show');
+if (path === 'js/usuario/form') {
+  $("#enviar").click(function () {
+    //Loadding...
+    loaddingCube.show();
+    $.ajax({
+      url: $('#salvar').val(),
+      type: 'POST',
+      data: {
+        usuario: $('#usuario').val(),
+        senha: $('#senha').val(),
+        nome: $('#nome').val(),
+        nivelAcesso: $('#nivelAcesso').val(),
+        id: $('#id').val()
+      }
+    }).done(function (response) {
+      loaddingCube.hide();
+      $('#messageRetorno').modal('show');
 
-    if (response === ok) {
-      //Mensagem de sucesso.
-      $('#retorno').html(messageOk);
-      setTimeout(function () {
-        $('#messageRetorno').modal('hide');
-      }, 1500);
-    } else {
-      //Mensagem de Erro.
-      $('#retorno').html(messageFail);
-      setTimeout(function () {
-        $('#messageRetorno').modal('hide');
-      }, 1500);
-    }
+      if (response === ok) {
+        //Mensagem de sucesso.
+        $('#retorno').html(messageOk);
+        setTimeout(function () {
+          $('#messageRetorno').modal('hide');
+        }, 1500);
+      } else {
+        //Mensagem de Erro.
+        $('#retorno').html(messageFail);
+        setTimeout(function () {
+          $('#messageRetorno').modal('hide');
+        }, 1500);
+      }
+    });
   });
-});
+}
+
+/***/ }),
+
+/***/ "./resources/views/js/usuario/index.js":
+/*!*********************************************!*\
+  !*** ./resources/views/js/usuario/index.js ***!
+  \*********************************************/
+/***/ (() => {
+
+
 
 /***/ }),
 
@@ -219,7 +231,8 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
 /******/ 	__webpack_require__.O(undefined, ["assets/appCss/app"], () => (__webpack_require__("./resources/views/js/global/global.js")))
-/******/ 	__webpack_require__.O(undefined, ["assets/appCss/app"], () => (__webpack_require__("./resources/views/js/teste_js/teste.js")))
+/******/ 	__webpack_require__.O(undefined, ["assets/appCss/app"], () => (__webpack_require__("./resources/views/js/usuario/form.js")))
+/******/ 	__webpack_require__.O(undefined, ["assets/appCss/app"], () => (__webpack_require__("./resources/views/js/usuario/index.js")))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/appCss/app"], () => (__webpack_require__("./resources/views/css/global/loadding.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	

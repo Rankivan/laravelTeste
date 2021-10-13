@@ -32,7 +32,7 @@
         </script>
 
         <!--Meu Js-->
-        <script src="{{asset('assets/appJs/app.js')}}"></script>
+        <script src="{{url(mix('assets/appJs/app.js'))}}"></script>
 
     </body>
 </html>

@@ -6,7 +6,7 @@ use App\Http\Repository\UsuarioRepository;
 use Illuminate\Http\Request;
 use SplFixedArray;
 
-class TesteService
+class UsuarioService
 {
 
     /**
@@ -27,7 +27,10 @@ class TesteService
       return $dados;
     }
 
-
+    /**
+     * @param $id
+     * @return \Illuminate\Database\Query\Builder|mixed
+     */
     public function getDadosForm($id)
     {
         $dados = $this->usuarioRepository->getDadosById($id);

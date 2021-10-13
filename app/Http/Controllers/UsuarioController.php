@@ -2,42 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Service\TesteService;
+use App\Http\Service\UsuarioService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 
-class TesteController extends Controller
+class UsuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function index(TesteService $testeService)
+    public function index(UsuarioService $usuarioService)
     {
-        $dado = $testeService->listagem();
-        return view('templates/index', ['dado' => $dado]);
+        $dado = $usuarioService->listagem();
+        return view('templates/usuario/index', ['dado' => $dado]);
     }
 
 
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function form(TesteService $testeService, $id)
+    public function form(UsuarioService $usuarioService, $id)
     {
-        $dados = $testeService->getDadosForm($id);
-        return view('templates/form', ['dadosForm' => $dados]);
+        $dados = $usuarioService->getDadosForm($id);
+        return view('templates/usuario/form', ['dadosForm' => $dados]);
     }
 
 
     /**
      * @param Request $request
      */
-    public function save(Request $request, TesteService $testeService)
+    public function save(Request $request, UsuarioService $usuarioService)
     {
         try {
-            $testeService->save($request);
+            $usuarioService->save($request);
             return Response::HTTP_OK;
 
         } catch (\Exception $exception) {
@@ -47,13 +47,13 @@ class TesteController extends Controller
     }
 
     /**
-     * @param TesteService $testeService
+     * @param UsuarioService $usuarioService
      * @return mixed
      */
-    public function delete(TesteService $testeService)
+    public function delete(UsuarioService $usuarioService)
     {
 
-        $dado = $testeService->delete();
+        $dado = $usuarioService->delete();
         return $dado;
 
     }

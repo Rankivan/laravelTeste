@@ -7,6 +7,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <title>Teste</title>
         <!-- Fonts -->
+        <link rel="shortcut icon" href="#">
         <link rel="stylesheet" href="{{url('assets/bootstrap/css/bootstrap.css')}}">
         <link rel="stylesheet" href="{{url('assets/appCss/app.css')}}">
 

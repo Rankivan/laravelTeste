@@ -2,7 +2,7 @@
 @extends('index')
 @section('conteudo')
     <script> path = 'js/usuario/form' </script>
-    <input id="salvar" value="/usuario/save" type="hidden">
+    <input id="salvar" value="/public/usuario/save" type="hidden">
     <input id="id" value="{{$dadosForm->id ?? ''}}" type="hidden">
 
     <!--======================================================================-->

@@ -2,7 +2,7 @@
 
 namespace App\Http\Service;
 
-use App\Http\Repository\UsuarioRepository;
+use App\Http\Models\Repository\UsuarioRepository;
 use Illuminate\Http\Request;
 use SplFixedArray;
 
